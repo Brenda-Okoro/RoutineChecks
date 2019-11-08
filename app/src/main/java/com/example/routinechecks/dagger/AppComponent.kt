@@ -17,5 +17,5 @@ interface AppComponent {
         fun build(): AppComponent
     }
 
-    fun inject(hcpApplication: RoutineCheckApplication)
+    fun inject(application: RoutineCheckApplication)
 }

@@ -1,6 +1,6 @@
 package com.example.routinechecks.dagger
 
-import com.example.routinechecks.MainActivity
+import com.example.routinechecks.activities.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

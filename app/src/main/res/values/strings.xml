@@ -1,4 +1,14 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">RoutineChecks</string>
     <string name="action_settings">Settings</string>
+    <string name="empty_state">You have no routine currently. Add one by clicking on the ADD BUTTON Below</string>
+    <string name="text_time"><xliff:g example="6" id="hour">%1d</xliff:g>:<xliff:g example="56" id="minute">%1s</xliff:g> <xliff:g example="PM" id="meridian">%2s</xliff:g></string>
+    <string name="text_unavailable">Unavailable</string>
+    <string name="routine_detail_text"><xliff:g example="Weekly" id="Freq">%1s</xliff:g> at <xliff:g example="6:45 PM" id="time">%2s</xliff:g></string>
+    <string name="routine_next_occurrence_text">Up next in <xliff:g example="1 day, 23hr, 16mins" id="time">%s</xliff:g></string>
+    <string name="text_push_title">ATTENTION: It\'s almost time for this routine:</string>
+    <string name="text_push_btn_one_label">Mute</string>
+    <string name="text_push_btn_two_label">Done</string>
+    <string name="notif_body"><xliff:g example="Running" id="name">%1s</xliff:g>(<xliff:g example="Body fitness" id="desc">%2s</xliff:g>):</string>
+
 </resources>

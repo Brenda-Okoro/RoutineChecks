@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.example.routinechecks.RoutineCheckApplication
 import com.example.routinechecks.database.AppDatabase
+import com.example.routinechecks.database.RoutineDao
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -29,18 +30,6 @@ internal class AppModule {
         return httpClient.build()
     }
 
-//    @Singleton
-//    @Provides
-//    fun provideHcpService(okHttpClient: OkHttpClient): EndPoint.Api {
-//        return Retrofit.Builder()
-//            .baseUrl(BuildConfig.URL)
-//            .client(okHttpClient)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//            .build()
-//            .create(EndPoint.Api::class.java)
-//    }
-
     @Singleton
     @Provides
     fun provideApplication(application: RoutineCheckApplication): Application {
@@ -50,16 +39,16 @@ internal class AppModule {
     @Singleton
     @Provides
     fun provideDatabase(application: Application): AppDatabase {
-        return Room.databaseBuilder(application, AppDatabase::class.java, "hcp_database")
+        return Room.databaseBuilder(application, AppDatabase::class.java, "routineApp_database")
 //                .addMigrations()
             .build()
     }
 
-//    @Singleton
-//    @Provides
-//    fun provideCheckInDao(appDatabase: AppDatabase): CheckInDao {
-//        return appDatabase.checkInDao()
-//    }
+    @Singleton
+    @Provides
+    fun provideRoutineDao(appDatabase: AppDatabase): RoutineDao {
+        return appDatabase.routineDao()
+    }
 
     companion object {
 

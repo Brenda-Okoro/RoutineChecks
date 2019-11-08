@@ -14,4 +14,16 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+    <!-- Empty State Screen -->
+    <style name="EmptyScreenText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/faint_grey</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:lineSpacingExtra">6dp</item>
+        <item name="android:layout_gravity">center_horizontal|center_vertical</item>
+    </style>
+
+
 </resources>
