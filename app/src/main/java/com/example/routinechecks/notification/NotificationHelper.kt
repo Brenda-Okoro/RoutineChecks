@@ -65,7 +65,7 @@ class NotificationHelper(private val context: Context) {
             .setContentTitle(param.title)
             .setContentIntent(param.bodyPendingIntent)
             .setSound(if (param.shouldSound()) param.soundUri else null)
-            .setGroup(App.APP_GROUP_KEY)
+            //.setGroup(App.APP_GROUP_KEY)
             .setLights(param.lightColor, 500, 1000)
             .setSubText(context.getString(R.string.app_name))
             .setVibrate(longArrayOf(0, 1000, 1000, 1000, 1000))

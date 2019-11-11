@@ -16,7 +16,6 @@ import kotlin.reflect.KClass
 
 @Module
 class ViewModelModule {
-
     @Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
     @Retention(RetentionPolicy.RUNTIME)
     @MapKey
@@ -27,17 +26,10 @@ class ViewModelModule {
         return ViewModelFactory(providerMap)
     }
 
-    @Binds
+    @Provides
     @IntoMap
     @ViewModelKey(RoutineListViewModel::class)
     fun getRoutineListViewModel(application: Application, lifecycleOwner: LifecycleOwner): ViewModel {
         return RoutineListViewModel(application, lifecycleOwner)
     }
-
-//    @Provides
-//    @IntoMap
-//    @ViewModelKey(RoutineDetailOccurrenceListViewModel::class)
-//    fun getRoutineOccurenceListViewModel(application: Application, lifecycleOwner: LifecycleOwner): ViewModel {
-//        return RoutineDetailOccurrenceListViewModel(application, lifecycleOwner)
-//    }
 }

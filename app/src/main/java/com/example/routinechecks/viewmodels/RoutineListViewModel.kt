@@ -1,6 +1,7 @@
 package com.example.routinechecks.viewmodels
 
 import android.app.Application
+import android.os.Looper
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,6 +11,10 @@ import com.example.routinechecks.activities.repository.RoutineRepository
 import com.example.routinechecks.database.Routines
 import com.example.routinechecks.viewmodels.BaseViewModel.Companion.STATE_LOADED
 import com.example.routinechecks.viewmodels.BaseViewModel.Companion.STATE_LOADING
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.util.logging.Handler
 import javax.inject.Inject
 
 class RoutineListViewModel (mApplication: Application, private val lifecycleOwner: LifecycleOwner): BaseViewModel(mApplication) {
@@ -45,11 +50,9 @@ class RoutineListViewModel (mApplication: Application, private val lifecycleOwne
 
     fun getAllRoutines() {
         setUiState(STATE_LOADING)
-        mExecutors?.diskIO()?.execute {
-            mDb?.dao?.getAllRoutine()?.observe(lifecycleOwner, Observer {
-                setRoutineList(it)
-            })
-        }
+                mDb?.dao?.getAllRoutine()?.observe(lifecycleOwner, Observer {
+                    setRoutineList(it)
+                })
     }
 
     fun addRoutine(routines: Routines) {

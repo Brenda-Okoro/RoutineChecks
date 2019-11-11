@@ -46,7 +46,6 @@ class RoutineListViewAdapter (private val mContext: Context, private val mListen
         notifyDataSetChanged()
     }
 
-
     /**
      * @property itemView is a container of a Routine card
      * @constructor creates a RecyclerView ViewHolder

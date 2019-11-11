@@ -46,7 +46,7 @@
             android:layout_gravity="center"
             android:alpha="0.7"
             android:indeterminate="true"
-            android:indeterminateTint="@color/colorAccent"
+            android:indeterminateTint="@color/blue_dark"
             android:indeterminateTintMode="src_atop"
             tools:ignore="UnusedAttribute" />
 

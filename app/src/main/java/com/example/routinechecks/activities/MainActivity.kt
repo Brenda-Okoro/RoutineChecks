@@ -1,7 +1,6 @@
 package com.example.routinechecks.activities
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -20,6 +19,7 @@ import com.example.routinechecks.dagger.ViewModelModule
 import com.example.routinechecks.database.RoutineOccurrence
 import com.example.routinechecks.database.Routines
 import com.example.routinechecks.fragments.RoutineDialogFragment
+import com.example.routinechecks.fragments.RoutineDialogFragment.Companion.newInstance
 import com.example.routinechecks.model.NextRoutine
 import com.example.routinechecks.utils.Constants
 import com.example.routinechecks.utils.Frequency
@@ -27,7 +27,6 @@ import com.example.routinechecks.utils.Helper
 import com.example.routinechecks.utils.Prefs
 import com.example.routinechecks.viewmodels.BaseViewModel
 import com.example.routinechecks.viewmodels.RoutineListViewModel
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import java.util.*
@@ -35,6 +34,14 @@ import java.util.*
 
 class MainActivity : BaseActivity(R.layout.activity_main), RoutineListViewAdapter.OnRoutineClickListener,
     RoutineDialogFragment.OnSaveOccurrence {
+    override fun onSaveRoutine(routines: Routines, isEdit: Boolean) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onRoutineClick(position: Int, clickedRoutine: Routines) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override val TAG = "MainActivity"
 
     inner class ViewHolder(private val mContainer: View) : AppViewHolder(mContainer) {
@@ -86,7 +93,7 @@ class MainActivity : BaseActivity(R.layout.activity_main), RoutineListViewAdapte
             if (routineList.isEmpty()) {
                 mState.setNoData()
             } else {
-                adapter.setData(routineList as java.util.ArrayList<Routines>)
+                adapter.setData(routineList as ArrayList<Routines>)
                 mState.setHasData()
             }
         }
@@ -159,7 +166,6 @@ class MainActivity : BaseActivity(R.layout.activity_main), RoutineListViewAdapte
 
         init {
 
-            //observe for Routine List data
             mViewModel.getRoutineListObserver().observe(mActivity, Observer {
                 if (it == null)
                     return@Observer
@@ -178,13 +184,12 @@ class MainActivity : BaseActivity(R.layout.activity_main), RoutineListViewAdapte
 
                     val occurrence = RoutineOccurrence(
                         addedRoutine.id, Constants.Status.UNKNOWN.id, date,
-                        Prefs.getsInstance().nextAlarmId, addedRoutine.name, addedRoutine.desc, addedRoutine.freqId
+                        Prefs.getsInstance()!!.nextAlarmId, addedRoutine.name, addedRoutine.desc, addedRoutine.freqId
                     )
                     AlarmHelper().execute(occurrence, AlarmHelper.ACTION_SCHEDULE_ALARM)
                 }
             })
 
-            //Observe for UI state change
             mViewModel.getUiStateObserver().observe(mActivity, Observer {
                 if (it == null)
                     return@Observer
@@ -192,7 +197,7 @@ class MainActivity : BaseActivity(R.layout.activity_main), RoutineListViewAdapte
                 switchScreenState(it)
             })
 
-            //Query for data
+            //Query data
             mViewModel.getAllRoutines()
         }
 
@@ -235,25 +240,14 @@ class MainActivity : BaseActivity(R.layout.activity_main), RoutineListViewAdapte
                 true
             }
 
-            R.id.action_next_up -> {
-                openNextUpActivity()
-                true
-            }
-
             else -> super.onOptionsItemSelected(item)
         }
     }
 
     private fun openAddRoutineDialog() {
-        RoutineDialogFragment.newInstance(this, false).show(
-            this.fragmentManager,
-            RoutineDialogFragment::class.java.name
-        )
-    }
-    private fun openNextUpActivity() {
-//        val intent = Intent(this, NextUpActivity::class.java)
-//        intent.putParcelableArrayListExtra(NextUpActivity.EXTRA_NEXT_UP_ROUTINE_LIST, model.mNextUpList)
-//        startActivity(intent)
+        this.fragmentManager
+        newInstance(this, false).show(this.fragmentManager,
+            RoutineDialogFragment::class.java.name)
     }
 
     private fun switchScreenState(state: Int) {

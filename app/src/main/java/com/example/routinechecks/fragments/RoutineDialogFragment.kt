@@ -13,7 +13,6 @@ import android.widget.AdapterView
 import android.widget.TimePicker
 import com.example.routinechecks.R
 import com.example.routinechecks.custom.CustomArraySpinner
-import com.example.routinechecks.dagger.Injectable
 import com.example.routinechecks.database.Routines
 import com.example.routinechecks.utils.Constants
 import com.example.routinechecks.utils.Frequency

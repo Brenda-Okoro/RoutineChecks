@@ -120,7 +120,6 @@ class AlarmHelper {
         const val ACTION_SCHEDULE_ALARM = 0
         const val ACTION_UPDATE_ALARM = 1
         const val ACTION_DELETE_ALARM = 2
-
         const val KEY_EXTRA_OCCURRENCE = "key_extra_occurrence"
     }
 }

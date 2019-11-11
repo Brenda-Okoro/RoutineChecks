@@ -78,7 +78,6 @@ class AlarmReceiver : BroadcastReceiver() {
             //schedule next routine
             AlarmHelper().execute(nextOccurrence, AlarmHelper.ACTION_SCHEDULE_ALARM)
 
-
             //start Simulated Job
             withContext(Dispatchers.Default) {
                 SimulatedJob(context, currentOccurrence).runJob()
