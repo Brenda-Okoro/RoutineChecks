@@ -22,4 +22,16 @@ interface RoutineDao {
 
     @Delete
     fun deleteRoutine(routine: Routines)
+
+    @Query("SELECT * FROM routine_occurrence WHERE alarm_id=:id")
+    fun getRoutineOccurrenceByAlarmId(id: Int): RoutineOccurrence
+
+    @Query("SELECT * FROM routine_occurrence WHERE routine_id = :id AND NOT status=0")
+    fun getAllRoutineOccurrences(id: Int): LiveData<List<RoutineOccurrence>>
+
+    @Insert
+    fun addOccurrence(occurrence: RoutineOccurrence)
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun updateOccurrence(currentOccurrence: RoutineOccurrence)
 }

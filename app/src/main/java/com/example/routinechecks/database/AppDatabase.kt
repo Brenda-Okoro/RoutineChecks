@@ -7,21 +7,26 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 // Creating the AppDatabase
-@Database(entities = [Routines:: class], version = 1)
+@Database(entities = [Routines:: class, RoutineOccurrence::class], version = 1, exportSchema = false)
 @TypeConverters(DateConverter::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun routineDao(): RoutineDao
-
     companion object {
-        @Volatile private var instance: AppDatabase? = null
         private val LOCK = Any()
+        private val DATABASE_NAME = "routineApp_database"
+        private var sInstance: AppDatabase? = null
 
-        operator fun invoke(context: Context)= instance ?: synchronized(LOCK){
-            instance ?: buildDatabase(context).also { instance = it}
+        fun getInstance(context: Context): AppDatabase? {
+            if (sInstance == null) {
+                synchronized(LOCK) {
+                    sInstance = Room.databaseBuilder<AppDatabase>(context.applicationContext,
+                        AppDatabase::class.java, DATABASE_NAME)
+                        .build()
+                }
+            }
+
+            return sInstance
         }
-
-        private fun buildDatabase(context: Context) = Room.databaseBuilder(context,
-            AppDatabase::class.java, "routineApp_database")
-            .build()
     }
+
+    abstract val dao: RoutineDao
 }

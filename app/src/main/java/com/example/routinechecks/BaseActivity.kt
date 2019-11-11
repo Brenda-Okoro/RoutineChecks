@@ -3,6 +3,7 @@ package com.example.routinechecks
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.annotation.VisibleForTesting
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -58,5 +59,10 @@ abstract class BaseActivity(@LayoutRes private val layoutId: Int) : AppCompatAct
          */
         @VisibleForTesting()
         var viewModelFactoryForTesting: ViewModelFactory? = null
+    }
+
+    protected fun createAlertDialog(message: String): AlertDialog.Builder {
+        return AlertDialog.Builder(this)
+            .setMessage(message)
     }
 }

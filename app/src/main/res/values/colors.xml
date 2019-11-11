@@ -10,4 +10,15 @@
     <color name="blue_dark">#003692</color>
     <color name="gray">#686c73</color>
 
+    <!-- Progress Colors -->
+    <color name="color_code1">#de7299</color>
+    <color name="color_code2">#a670d2</color>
+    <color name="color_code3">#fad960</color>
+    <color name="color_code4">#f89939</color>
+    <color name="color_code5">#4fe0df</color>
+    <color name="color_code6">#53baf7</color>
+    <color name="color_code7">#C86DD7</color>
+    <color name="color_code8">#3023AE</color>
+    <color name="color_code9">#53baf7</color>
+
 </resources>

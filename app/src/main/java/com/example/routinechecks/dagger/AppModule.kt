@@ -44,11 +44,11 @@ internal class AppModule {
             .build()
     }
 
-    @Singleton
-    @Provides
-    fun provideRoutineDao(appDatabase: AppDatabase): RoutineDao {
-        return appDatabase.routineDao()
-    }
+//    @Singleton
+//    @Provides
+//    fun provideRoutineDao(appDatabase: AppDatabase): RoutineDao {
+//        return appDatabase.routineDao()
+//    }
 
     companion object {
 

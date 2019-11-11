@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer-array name="progress_color_codes">
+        <item>@color/color_code1</item>
+        <item>@color/color_code2</item>
+        <item>@color/color_code3</item>
+        <item>@color/color_code4</item>
+        <item>@color/color_code5</item>
+        <item>@color/color_code6</item>
+        <item>@color/color_code7</item>
+        <item>@color/color_code8</item>
+        <item>@color/color_code9</item>
+    </integer-array>
+
+</resources>
